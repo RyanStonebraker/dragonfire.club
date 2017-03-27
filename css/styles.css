@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+html {
+  height: 100%;
+  min-height: 100%;
+  min-width:100%;
+
+  background-color: lightgray;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.centerDiv {
+  text-align: center;
+  width: 86%;
+  margin: auto;
+  margin-top: 0;
+  padding: 0;
+  background-color: white;
+  box-shadow: 5px 0 50px rgba(0, 0, 0, 0.7);
+  font-size: 0;
+}
+
+h1 {
+  font-size: 3vw;
+  margin-bottom: 0;
+  font-family: kozuka-gothic-pro, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+}
+
+.colorButton {
+  display: inline-block;
+  margin: 0;
+  padding-top: 36vh;
+  padding-bottom: 37.5vh;
+  width: 21.5vw;
+  text-align: center;
+
+  font-family: kozuka-gothic-pro, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+
+  font-size: 1.5vw;
+  text-decoration: none;
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
+.colorButton:link {
+  color: white;
+}
+
+.colorButton:visited {
+  color: white;
+
+}
+
+.colorButton:active {
+  color: white;
+}
+
+.blueButton {
+  background-color: lightblue;
+}
+
+.blueButton:hover {
+  font-weight: bold;
+  background-color: blue;
+}
+
+.greenButton {
+  background-color: lightgreen;
+}
+
+.greenButton:hover {
+  font-weight: bold;
+  background-color: green;
+}
+
+.redButton {
+  background-color: salmon;
+}
+
+.redButton:hover {
+  font-weight: bold;
+  background-color: red;
+}
+
+.yellowButton {
+  background-color: rgb(255, 255, 153);
+}
+
+.yellowButton:hover {
+  font-weight: bold;
+  background-color: yellow;
+}
