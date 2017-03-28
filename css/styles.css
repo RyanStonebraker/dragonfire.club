@@ -33,6 +33,19 @@ h1 {
   text-align: center;
 }
 
+.dragon {
+display:inline-block;
+margin: 0;
+padding: 0;
+}
+
+.formSubmit {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
 .colorButton {
   display: inline-block;
   margin: 0;
