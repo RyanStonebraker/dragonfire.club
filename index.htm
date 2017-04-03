@@ -34,11 +34,12 @@ body {
 }
 
 h1 {
-  font-size: 3vw;
+  font-size: 5vw;
   margin-bottom: 0;
-  font-family: kozuka-gothic-pro, sans-serif;
+  margin-top: 0;
+  font-family: mistral, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 200;
   text-align: center;
 }
 
@@ -69,7 +70,7 @@ padding: 0;
 
   font-size: 1.5vw;
   text-decoration: none;
-  color: black;
+  color: white;
   background-color: rgb(255, 255, 255);
 }
 
@@ -124,13 +125,85 @@ padding: 0;
 
 </style>
 
+<script src="js/jquery-3.2.0.min.js"></script>
+
 <body>
     <div class="centerDiv">
         <h1>dragonFire.club</h1>
-        <form class="formSubmit" method="post" action="?color=blue"><button class="colorButton blueButton">Blue</button></form>
+
+        <!-- <form class = "formSubmit" method = "post">
+          <button class = "colorButton blueButton" name = "color" value = "blue">Blue</button>
+        </form> -->
+        <a class = "colorButton blueButton"> Blue </a>
+        <a class = "colorButton greenButton"> Green </a>
+        <a class = "colorButton redButton"> Red </a>
+        <a class = "colorButton yellowButton"> Yellow </a>
+        <script>
+        $('.blueButton').click(function()
+        {
+          $.ajax({
+               url: "",
+              type:'POST',
+              data:
+              {
+                  color: "blue"
+              },
+              success: function(msg)
+              {
+                  alert('Blue Sent');
+              }
+          });
+        });
+        $('.redButton').click(function()
+        {
+          $.ajax({
+               url: "",
+              type:'POST',
+              data:
+              {
+                  color: "red"
+              },
+              success: function(msg)
+              {
+                  alert('Red Sent');
+              }
+          });
+        });
+        $('.greenButton').click(function()
+        {
+          $.ajax({
+               url: "",
+              type:'POST',
+              data:
+              {
+                  color: "green"
+              },
+              success: function(msg)
+              {
+                  alert('Green Sent');
+              }
+          });
+        });
+        $('.yellowButton').click(function()
+        {
+          $.ajax({
+               url: "",
+              type:'POST',
+              data:
+              {
+                  color: "yellow"
+              },
+              success: function(msg)
+              {
+                  alert('Yellow Sent');
+              }
+          });
+        });
+        </script>
+        <!-- <form class="formSubmit" method="post" action="?color=blue"><button class="colorButton blueButton">Blue</button></form>
         <form class="formSubmit" method="post" action="?color=green"><button class="colorButton greenButton">Green</button></form>
         <form class="formSubmit" method="post" action="?color=red"><button class="colorButton redButton">Red</button></form>
-        <form class="formSubmit" method="post" action="?color=yellow"><button class="colorButton yellowButton">Yellow</button></form>
+        <form class="formSubmit" method="post" action="?color=yellow"><button class="colorButton yellowButton">Yellow</button></form> -->
     </div>
 </body>
 
