@@ -1,5 +1,11 @@
 var http = require('http');
 var fs = require('fs');
+var SerialPort = require('serialport');
+
+
+var port = new SerialPort('COM9', {
+  baudRate: 9600
+});
 
 var file = fs.readFileSync('index.htm', 'utf8');
 
@@ -16,8 +22,9 @@ var file = fs.readFileSync('index.htm', 'utf8');
                 request.connection.destroy();
         });
         request.on('end', function () {
-           var post = body
+           var post = body+'\n';
            console.log(post);
+           serial(post);
        });
      }
         response.writeHead(200, {'Content-Type': 'text/html'});
@@ -25,4 +32,20 @@ var file = fs.readFileSync('index.htm', 'utf8');
         response.end();
     });
 
-    server.listen(8001);
+    server.listen(8001, "0.0.0.0");
+
+function serial(post)
+{
+  port.write(post, function(err) {
+    if (err) {
+      return console.log('Error on write: ', err.message);
+    }
+
+  });
+  console.log('message written');
+
+// open errors will be emitted as an error event
+port.on('error', function(err) {
+  console.log('Error: ', err.message);
+})
+}
