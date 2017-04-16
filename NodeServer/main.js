@@ -3,7 +3,7 @@ var fs = require('fs');
 var SerialPort = require('serialport');
 
 
-var port = new SerialPort('COM9', {
+var port = new SerialPort('/dev/cu.usbmodem1411', {
   baudRate: 9600
 });
 
@@ -32,7 +32,7 @@ var file = fs.readFileSync('index.htm', 'utf8');
         response.end();
     });
 
-    server.listen(8001, "0.0.0.0");
+    server.listen(8080);
 
 function serial(post)
 {
