@@ -5,70 +5,94 @@
 
 */
 
-int greenled = 2;
-int blueled = 3;
-int yellowled = 5;
-int redled = 6;
+int greenSolenoid = 3;
+int blueSolenoid = 2;
+int yellowSolenoid = 6;
+int redSolenoid = 5;
 
-String readString; 
+float greenElapsed = 0;
+float blueElapsed = 0;
+float yellowElapsed = 0;
+float redElapsed = 0;
+
+#define ONTIME 50
+
+String readString;
 
 void setup() {
   // initialize serial:
   Serial.begin(9600);
   //Set pins as output:
-  pinMode(greenled, OUTPUT);
-  pinMode(blueled, OUTPUT);
-  pinMode(redled, OUTPUT);
-  pinMode(yellowled, OUTPUT);
+  pinMode(greenSolenoid, OUTPUT);
+  pinMode(blueSolenoid, OUTPUT);
+  pinMode(redSolenoid, OUTPUT);
+  pinMode(yellowSolenoid, OUTPUT);
   Serial.println("Started");
 }
 
 void loop() {
   // if there's any serial available, read it:
   while (Serial.available() > 0) {
-    
+
     char c = Serial.read(); // read 1 byte (character) from client
-    readString += c; 
+    readString += c;
 
     if (c == '\n'){
       Serial.println(readString);
-      changeleds();
+      changeSolenoids();
       readString = "";
+      break;
     }
-
   }
+
+  resetSolenoids();
 }
 
-void changeleds(){
+void resetSolenoids() {
+  if (millis() >= greenElapsed + ONTIME)
+    digitalWrite(greenSolenoid, LOW);
+
+  if (millis() >= redElapsed + ONTIME)
+    digitalWrite(redSolenoid, LOW);
+
+  if (millis() >= blueElapsed + ONTIME)
+    digitalWrite(blueSolenoid, LOW);
+
+  if (millis() >= yellowElapsed + ONTIME)
+    digitalWrite(yellowSolenoid, LOW);
+}
+
+void changeSolenoids(){
  if(readString.indexOf("green") > 0){
-  digitalWrite(greenled, HIGH);    // set pin 5 high
-  Serial.println("Green led on");
+  digitalWrite(greenSolenoid, HIGH);    // set pin 5 high
+  greenElapsed = millis();
+  Serial.println("Green Solenoid on");
  }
  else{
-  digitalWrite(greenled, LOW);
+  digitalWrite(greenSolenoid, LOW);
  }
   if(readString.indexOf("blue") > 0){
-  digitalWrite(blueled, HIGH);    // set pin 5 high
-  Serial.println("blue led on");
+  digitalWrite(blueSolenoid, HIGH);    // set pin 5 high
+  blueElapsed = millis();
+  Serial.println("Blue Solenoid on");
  }
  else{
-  digitalWrite(blueled, LOW);
+  digitalWrite(blueSolenoid, LOW);
  }
  if(readString.indexOf("red") > 0){
-  digitalWrite(redled, HIGH);    // set pin 5 high
-  Serial.println("red led on");
+  digitalWrite(redSolenoid, HIGH);    // set pin 5 high
+  redElapsed = millis();
+  Serial.println("Red Solenoid on");
  }
  else{
-  digitalWrite(redled, LOW);
+  digitalWrite(redSolenoid, LOW);
  }
  if(readString.indexOf("yellow") > 0){
-  digitalWrite(yellowled, HIGH);    // set pin 5 high
-  Serial.println("yellow led on");
+  digitalWrite(yellowSolenoid, HIGH);    // set pin 5 high
+  yellowElapsed = millis();
+  Serial.println("Yellow Solenoid on");
  }
  else{
-  digitalWrite(yellowled, LOW);
+  digitalWrite(yellowSolenoid, LOW);
  }
 }
-
-
-
