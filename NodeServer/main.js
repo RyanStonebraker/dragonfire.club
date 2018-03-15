@@ -3,9 +3,9 @@ var fs = require('fs');
 var SerialPort = require('serialport');
 
 
-// var port = new SerialPort('/dev/cu.usbmodem1411', {
-//   baudRate: 9600
-// });
+var port = new SerialPort('/dev/cu.usbmodem1411', {
+  baudRate: 9600
+});
 
 var file = fs.readFileSync('index.htm', 'utf8');
 
